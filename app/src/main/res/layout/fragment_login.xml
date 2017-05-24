@@ -2,12 +2,90 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/root_login_fragment"
+    android:background="@color/colorPrimary"
     tools:context="app.com.profiler.login.LoginFragment">
-
-    <!-- TODO: Update blank fragment layout -->
+<RelativeLayout
+    android:id="@+id/cont_login_fragment"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_gravity="center_horizontal"
+    >
     <TextView
+        style="@style/Label.CredentialHeader"
+        android:id="@+id/tv_login_header"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_blank_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/header_welcome"
+        android:gravity="center"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true" />
 
+    <TextView
+        style="@style/Label.Sub"
+        android:id="@+id/tv_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prompt_email"
+        android:layout_below="@+id/tv_login_header"
+    />
+    <EditText
+        style="@style/InputFiled.Credentials.Email"
+        android:id="@+id/edt_login_email"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_email"
+        android:layout_below="@id/tv_login_email"
+        />
+    <TextView
+    style="@style/Label.Sub"
+        android:id="@+id/tv_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/prompt_password"
+        android:layout_below="@+id/edt_login_email"
+         />
+    <EditText
+        style="@style/InputFiled.Credentials.Password"
+
+        android:id="@+id/edt_login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="@string/hint_password"
+        tools:text="Blabal"
+        android:layout_below="@id/tv_login_password"
+        />
+<Button
+    style="@style/Button.Flat.Primary"
+    android:id="@+id/btn_login"
+    android:layout_width="wrap_content"
+    android:layout_height="48dp"
+    android:text="@string/btn_text_login"
+    android:layout_below="@id/edt_login_password"
+    android:layout_centerHorizontal="true"
+    />
+    <Button
+        style="@style/Button.Flat.Primary"
+        android:id="@+id/btn_create_account"
+        android:layout_width="wrap_content"
+        android:layout_height="48dp"
+        android:text="@string/btn_text_create_account"
+        android:layout_below="@id/btn_login"
+        android:layout_centerHorizontal="true"
+
+        />
+
+</RelativeLayout>
+<ProgressBar
+    android:id="@+id/pro_login_loading"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_gravity="center"
+    android:visibility="invisible"
+    android:indeterminate="true"
+    android:indeterminateTint="@color/colorAccent"
+    />
 </FrameLayout>
