@@ -12,16 +12,44 @@ android {
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
-        release {
+        debug{
+            testCoverageEnabled true
             minifyEnabled false
+            useProguard false
+
+        }
+        release {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    flavorDimensions "default"
     productFlavors {
         //mock
-
+        mock{
+            applicationIdSuffix = ".mock"
+            dimension "default"
+        }
         //prod
+        prod{
+            applicationIdSuffix = ".prod"
+            dimension "default"
+        }
 
+    }
+    // Always show the result of every unit test , if  it pass
+    // Android Unit tests logging configuration
+
+    testOptions.unitTests.all {
+        testLogging {
+            events 'passed', 'skipped', 'failed', 'standardOut', 'standardError'
+        }
+    }
+    android.variantFilter{
+        variant ->
+            if(variant.buildType.name == "release" && variant.getFlavors().get(0).name == "mock"){
+            variant.setIgnore(true)
+        }
     }
 }
 
